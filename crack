@@ -1,0 +1,91 @@
+
+#define _XOPEN_SOURCE
+#include <unistd.h>
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(int argc, string argv[])
+{
+
+    string key = argv[1];
+
+    if (argc != 2)
+    {
+        printf("Try again.\n");
+        return 1;
+    }
+    else
+    {
+
+        printf("key: %s\n", key);
+        int spotFive = 65;
+        int spotFour;
+        int spotThree;
+        int spotTwo;
+        int spotOne = 65;
+        char string[6];
+        char salt[2] = "50";
+        char pass[15];
+
+        //printf("%s\n",crypt(key, salt);
+        for (spotFive = 65; spotFive > 64 && spotFive < 123; spotFive++)
+        {
+            spotFour = 65;
+            for (spotFour = 65; spotFour > 64 && spotFour < 123; spotFour++)
+            {
+                spotThree = 65;
+                for (spotThree = 65; spotThree > 64 && spotThree < 123; spotThree++)
+                {
+                    spotTwo = 65;
+                    for (spotTwo = 65; spotTwo > 64 && spotTwo < 123; spotTwo++)
+                    {
+                        spotOne = 65;
+                        for (spotOne = 65; spotOne > 64 && spotOne < 123; spotOne++)
+                        {
+
+                            //printf("%c ", spotOne);
+                            sprintf(string,"%c%c%c%c%c", spotFive, spotFour, spotThree, spotTwo, spotOne);
+                            sprintf(pass, "%s", crypt(string, salt));
+                            int result = strcmp(key, pass);
+                            //result = 0;
+                            //printf("result of strcmp %i\n", result);
+                            //printf("input hash %s\n", key);
+                            //printf("string of chars for pw guess %s\n", string);
+                            //printf("password from guess to crypt %s\n", pass);
+                            if (result == 0)
+                            {
+                                printf("input key: %s\n password: %s\n cracked: %s\n", key, pass, string);
+                                return 0;
+                            }
+
+                            // use crypt here to evaluate in an if statement. if crypt = hash. set variable, break.
+                        }
+                    }
+                }
+            }
+        }
+        // current thoughts
+        // put sprint in final for to print string with no spaces to variable
+        // take variable and use in crypt()
+
+        //char myHash[] = "";
+
+        //printf("%s", myHash);
+        //printf("\n");
+        //printf("Hash: %s\n", key);
+        //char keyChar[6];
+
+        //char letterOne = key[0];
+        //char letterTwo = key[1];
+        //printf("letterOne = : %c\n", letterOne);
+        //printf("letterTwo = : %c\n", letterTwo);
+        //char salt[2] = "";
+        //sprintf(salt, "%c%c", letterOne, letterTwo);
+        //printf("key: %s\n", salt);
+
+        //char * pass = crypt(key, salt);
+
+        //printf("pass is: %s\n", pass);
+    }
+}
